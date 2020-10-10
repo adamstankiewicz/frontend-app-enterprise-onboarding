@@ -1,19 +1,12 @@
 |Build Status| |Codecov| |license|
 
-frontend-template-application
+frontend-app-enterprise-onboarding
 =================================
 
-Please tag **@edx/fedx-team** on any PRs or issues.  Thanks.
+Please tag **@edx/enterprise-titans** on any PRs or issues.  Thanks.
 
-Introduction
-------------
-
-This repository is a template for Open edX micro-frontend applications. It is flagged as a Template Repository, meaning it can be used as a basis for new GitHub repositories by clicking the green "Use this template" button above.  The rest of this document describes how to work with your new micro-frontend after you've created a new repository from the template.
-
-After Copying The Template
---------------------------
-
-You'll want to do a find-and-replace to replace all instances of ``frontend-template-application`` with the name of your new repository.
+Getting Started
+---------------
 
 **Prerequisite**
 
@@ -21,15 +14,13 @@ You'll want to do a find-and-replace to replace all instances of ``frontend-temp
 
 **Installation and Startup**
 
-In the following steps, replace "frontend-template-application' with the name of the repo you created when copying this template above.
-
 1. Clone your new repo:
 
-  ``git clone https://github.com/edx/frontend-template-application.git``
+  ``git clone https://github.com/edx/frontend-app-enterprise-onboarding.git``
 
 2. Install npm dependencies:
 
-  ``cd frontend-template-application && npm install``
+  ``cd frontend-app-enterprise-onboarding && npm install``
 
 3. Start the dev server:
 
@@ -54,9 +45,9 @@ Internationalization
 
 Please see `edx/frontend-platform's i18n module <https://edx.github.io/frontend-platform/module-Internationalization.html>`_ for documentation on internationalization.  The documentation explains how to use it, and the `How To <https://github.com/edx/frontend-i18n/blob/master/docs/how_tos/i18n.rst>`_ has more detail.
 
-.. |Build Status| image:: https://api.travis-ci.org/edx/frontend-template-application.svg?branch=master
-   :target: https://travis-ci.org/edx/frontend-template-application
-.. |Codecov| image:: https://codecov.io/gh/edx/frontend-template-application/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/edx/frontend-template-application
-.. |license| image:: https://img.shields.io/npm/l/@edx/frontend-template-application.svg
-   :target: @edx/frontend-template-application
+.. |Build Status| image:: https://api.travis-ci.org/edx/frontend-app-enterprise-onboarding.svg?branch=master
+   :target: https://travis-ci.org/edx/frontend-app-enterprise-onboarding
+.. |Codecov| image:: https://codecov.io/gh/edx/frontend-app-enterprise-onboarding/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/edx/frontend-app-enterprise-onboarding
+.. |license| image:: https://img.shields.io/npm/l/@edx/frontend-app-enterprise-onboarding.svg
+   :target: @edx/frontend-app-enterprise-onboarding
