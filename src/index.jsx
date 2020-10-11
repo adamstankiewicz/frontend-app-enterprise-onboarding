@@ -12,8 +12,8 @@ import { Helmet } from 'react-helmet';
 
 import appMessages from './i18n';
 
-import { NotFoundPage } from './components/not-found';
 import PageLayout from './components/page-layout';
+import NotFound from './pages/not-found';
 import LearnerReport from './pages/learner-report';
 import SubscriptionManagement from './pages/subscription-management';
 import CodeManagement from './pages/code-management';
@@ -38,7 +38,7 @@ subscribe(APP_READY, () => {
           <Route path="/admin/analytics" component={Analytics} />
           <Route path="/admin/samlconfiguration" component={SAMLConfiguration} />
           <Route path="/admin/support" component={Support} />
-          <Route path="*" component={NotFoundPage} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </PageLayout>
     </AppProvider>,
