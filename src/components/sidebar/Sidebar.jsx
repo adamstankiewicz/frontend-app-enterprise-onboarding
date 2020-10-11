@@ -13,18 +13,6 @@ import {
   faLifeRing,
 } from '@fortawesome/free-solid-svg-icons';
 
-export function SidebarIcon({ children }) {
-  return (
-    <span className="mr-2">
-      {children}
-    </span>
-  );
-}
-
-SidebarIcon.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export const SidebarLink = React.forwardRef((props, ref) => {
   const { to, icon, children } = props;
   return (
@@ -36,9 +24,9 @@ export const SidebarLink = React.forwardRef((props, ref) => {
       eventKey={to}
       ref={ref}
     >
-      <SidebarIcon>
+      <span className="mr-2">
         <FontAwesomeIcon icon={icon} />
-      </SidebarIcon>
+      </span>
       {children}
     </Nav.Link>
   );
@@ -46,7 +34,7 @@ export const SidebarLink = React.forwardRef((props, ref) => {
 
 SidebarLink.propTypes = {
   to: PropTypes.string.isRequired,
-  icon: PropTypes.element.isRequired,
+  icon: PropTypes.shape().isRequired,
   children: PropTypes.node.isRequired,
 };
 
