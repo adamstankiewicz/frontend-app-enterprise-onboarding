@@ -14,9 +14,15 @@ import appMessages from './i18n';
 
 import { NotFoundPage } from './components/not-found';
 import PageLayout from './components/page-layout';
+import LearnerReport from './pages/learner-report';
+import SubscriptionManagement from './pages/subscription-management';
+import CodeManagement from './pages/code-management';
+import ReportingConfigurations from './pages/reporting-configurations';
+import Analytics from './pages/analytics';
+import SAMLConfiguration from './pages/saml-configuration';
+import Support from './pages/support';
 
 import './index.scss';
-
 import './assets/favicon.ico';
 
 subscribe(APP_READY, () => {
@@ -25,6 +31,13 @@ subscribe(APP_READY, () => {
       <Helmet titleTemplate="%s | edX" />
       <PageLayout>
         <Switch>
+          <Route path="/admin/learners" component={LearnerReport} />
+          <Route path="/admin/coupons" component={CodeManagement} />
+          <Route path="/admin/subscriptions" component={SubscriptionManagement} />
+          <Route path="/admin/reporting" component={ReportingConfigurations} />
+          <Route path="/admin/analytics" component={Analytics} />
+          <Route path="/admin/samlconfiguration" component={SAMLConfiguration} />
+          <Route path="/admin/support" component={Support} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </PageLayout>
