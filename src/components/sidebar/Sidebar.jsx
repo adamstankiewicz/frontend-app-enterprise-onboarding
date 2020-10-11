@@ -98,7 +98,7 @@ export default function Sidebar({
             to="/admin/support"
             icon={faLifeRing}
           >
-            Contact Support
+            Support
           </SidebarLink>
         </Nav>
       </div>
