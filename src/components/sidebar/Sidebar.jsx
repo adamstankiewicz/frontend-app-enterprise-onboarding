@@ -55,51 +55,53 @@ export default function Sidebar({
 
   return (
     <div className="border-right" id="sidebar-wrapper">
-      <Nav activeKey={location.pathname} as="nav" className="flex-column">
-        <SidebarLink
-          to="/admin/learners"
-          icon={faChartLine}
-          ref={refFocusOnToggle}
-        >
-          Learner Report
-        </SidebarLink>
-        <SidebarLink
-          to="/admin/coupons"
-          icon={faTag}
-        >
-          Code Management
-        </SidebarLink>
-        <SidebarLink
-          to="/admin/reporting"
-          icon={faFile}
-        >
-          Reporting Configurations
-        </SidebarLink>
-        <SidebarLink
-          to="/admin/subscriptions"
-          icon={faCreditCard}
-        >
-          Subscription Management
-        </SidebarLink>
-        <SidebarLink
-          to="/admin/analytics"
-          icon={faChartBar}
-        >
-          Analytics
-        </SidebarLink>
-        <SidebarLink
-          to="/admin/samlconfiguration"
-          icon={faIdCard}
-        >
-          SAML Configuration
-        </SidebarLink>
-        <SidebarLink
-          to="/admin/support"
-          icon={faLifeRing}
-        >
-          Contact Support
-        </SidebarLink>
-      </Nav>
+      <div id="nav-wrapper">
+        <Nav activeKey={location.pathname} as="nav" className="flex-column">
+          <SidebarLink
+            to="/admin/learners"
+            icon={faChartLine}
+            ref={refFocusOnToggle}
+          >
+            Learner Report
+          </SidebarLink>
+          <SidebarLink
+            to="/admin/coupons"
+            icon={faTag}
+          >
+            Code Management
+          </SidebarLink>
+          <SidebarLink
+            to="/admin/reporting"
+            icon={faFile}
+          >
+            Reporting Configurations
+          </SidebarLink>
+          <SidebarLink
+            to="/admin/subscriptions"
+            icon={faCreditCard}
+          >
+            Subscription Management
+          </SidebarLink>
+          <SidebarLink
+            to="/admin/analytics"
+            icon={faChartBar}
+          >
+            Analytics
+          </SidebarLink>
+          <SidebarLink
+            to="/admin/samlconfiguration"
+            icon={faIdCard}
+          >
+            SAML Configuration
+          </SidebarLink>
+          <SidebarLink
+            to="/admin/support"
+            icon={faLifeRing}
+          >
+            Contact Support
+          </SidebarLink>
+        </Nav>
+      </div>
     </div>
   );
 }

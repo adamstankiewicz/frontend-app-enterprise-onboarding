@@ -14,6 +14,7 @@ import appMessages from './i18n';
 
 import PageLayout from './components/page-layout';
 import RouteLoading, { ErrorBoundary } from './components/route-loading';
+import Toasts, { ToastsProvider } from './components/toasts';
 
 import './index.scss';
 import './assets/favicon.ico';
@@ -31,22 +32,25 @@ subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider>
       <Helmet titleTemplate="%s | edX" />
-      <PageLayout>
-        <ErrorBoundary>
-          <Suspense fallback={<RouteLoading />}>
-            <Switch>
-              <Route path="/admin/learners" component={LearnerReport} />
-              <Route path="/admin/coupons" component={CodeManagement} />
-              <Route path="/admin/subscriptions" component={SubscriptionManagement} />
-              <Route path="/admin/reporting" component={ReportingConfigurations} />
-              <Route path="/admin/analytics" component={Analytics} />
-              <Route path="/admin/samlconfiguration" component={SAMLConfiguration} />
-              <Route path="/admin/support" component={Support} />
-              <Route path="*" component={NotFound} />
-            </Switch>
-          </Suspense>
-        </ErrorBoundary>
-      </PageLayout>
+      <ToastsProvider>
+        <Toasts />
+        <PageLayout>
+          <ErrorBoundary>
+            <Suspense fallback={<RouteLoading />}>
+              <Switch>
+                <Route path="/admin/learners" component={LearnerReport} />
+                <Route path="/admin/coupons" component={CodeManagement} />
+                <Route path="/admin/subscriptions" component={SubscriptionManagement} />
+                <Route path="/admin/reporting" component={ReportingConfigurations} />
+                <Route path="/admin/analytics" component={Analytics} />
+                <Route path="/admin/samlconfiguration" component={SAMLConfiguration} />
+                <Route path="/admin/support" component={Support} />
+                <Route path="*" component={NotFound} />
+              </Switch>
+            </Suspense>
+          </ErrorBoundary>
+        </PageLayout>
+      </ToastsProvider>
     </AppProvider>,
     document.getElementById('root'),
   );

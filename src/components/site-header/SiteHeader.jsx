@@ -4,13 +4,12 @@ import Responsive from 'react-responsive';
 import edXLogo from '@edx/brand/logo-trademark.svg';
 import { Link } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
-import { Button } from '@edx/paragon';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { IconButton } from '@edx/paragon';
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 
 import Avatar from './Avatar';
 import { Menu, MenuTrigger, MenuContent } from './menu';
-import { MenuIcon, CaretIcon } from './Icons';
+import { CaretIcon } from './Icons';
 
 const INTERNAL_LINK_TYPE = 'internal';
 
@@ -38,18 +37,12 @@ export default function SiteHeader({
   );
 
   const renderMenuToggleButton = () => (
-    <Button
-      variant="link"
-      className="text-dark px-0"
-      style={{ width: 40 }}
+    <IconButton
+      icon={isSidebarToggled ? faTimes : faBars}
+      alt="Close"
       onClick={onMenuIconClick}
-    >
-      {isSidebarToggled ? (
-        <FontAwesomeIcon icon={faTimes} />
-      ) : (
-        <MenuIcon />
-      )}
-    </Button>
+      variant="dark"
+    />
   );
 
   const renderDesktopUserMenu = () => {
