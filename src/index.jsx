@@ -6,21 +6,28 @@ import {
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+import { messages as footerMessages } from '@edx/frontend-component-footer';
+import { Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import appMessages from './i18n';
-import SiteHeader from './components/site-header';
-import ExamplePage from './example/ExamplePage';
+
+import { NotFoundPage } from './components/not-found';
+import PageLayout from './components/page-layout';
 
 import './index.scss';
+
 import './assets/favicon.ico';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider>
-      <SiteHeader />
-      <ExamplePage />
-      <Footer />
+      <Helmet titleTemplate="%s | edX" />
+      <PageLayout>
+        <Switch>
+          <Route path="*" component={NotFoundPage} />
+        </Switch>
+      </PageLayout>
     </AppProvider>,
     document.getElementById('root'),
   );
@@ -35,7 +42,6 @@ initialize({
   hydrateAuthenticatedUser: true,
   messages: [
     appMessages,
-    // headerMessages,
     footerMessages,
   ],
 });

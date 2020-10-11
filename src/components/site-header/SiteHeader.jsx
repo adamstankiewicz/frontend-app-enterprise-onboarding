@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import Responsive from 'react-responsive';
 import edXLogo from '@edx/brand/logo-trademark.svg';
 import { Link } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
+import { Button } from '@edx/paragon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import Avatar from './Avatar';
 import { Menu, MenuTrigger, MenuContent } from './menu';
@@ -10,7 +14,10 @@ import { MenuIcon, CaretIcon } from './Icons';
 
 const INTERNAL_LINK_TYPE = 'internal';
 
-export default function SiteHeader() {
+export default function SiteHeader({
+  onMenuIconClick,
+  isSidebarToggled,
+}) {
   const { authenticatedUser } = useContext(AppContext);
 
   const userMenuItems = [
@@ -30,16 +37,20 @@ export default function SiteHeader() {
     </Link>
   );
 
-  const renderMainMenu = () => {
-    const mainMenuLinkClassName = 'nav-link';
-    return (
-      <>
-        <a href="https://support.edx.org/hc/en-us" className={mainMenuLinkClassName}>
-          Help
-        </a>
-      </>
-    );
-  };
+  const renderMenuToggleButton = () => (
+    <Button
+      variant="link"
+      className="text-dark px-0"
+      style={{ width: 40 }}
+      onClick={onMenuIconClick}
+    >
+      {isSidebarToggled ? (
+        <FontAwesomeIcon icon={faTimes} />
+      ) : (
+        <MenuIcon />
+      )}
+    </Button>
+  );
 
   const renderDesktopUserMenu = () => {
     const desktopMenuLinkClassName = 'dropdown-item';
@@ -84,10 +95,10 @@ export default function SiteHeader() {
     <header className="site-header-desktop">
       <div className="container-fluid">
         <div className="nav-container position-relative d-flex align-items-center">
+          <div className="mr-2">
+            {renderMenuToggleButton()}
+          </div>
           {renderLogo()}
-          <nav aria-label="Main" className="nav main-nav">
-            {renderMainMenu()}
-          </nav>
           {authenticatedUser?.profileImage && (
             <nav aria-label="Secondary" className="nav secondary-menu-container align-items-center ml-auto">
               {renderDesktopUserMenu()}
@@ -124,7 +135,6 @@ export default function SiteHeader() {
   };
 
   const renderMobileHeader = () => {
-    const mainMenuTitle = 'Main Menu';
     const accountMenuTitle = 'Account Menu';
 
     return (
@@ -133,23 +143,7 @@ export default function SiteHeader() {
         className="site-header-mobile d-flex justify-content-between align-items-center shadow"
       >
         <div className="w-100 d-flex justify-content-start">
-          <Menu className="position-static">
-            <MenuTrigger
-              tag="button"
-              className="icon-button"
-              aria-label={mainMenuTitle}
-              title={mainMenuTitle}
-            >
-              <MenuIcon role="img" aria-hidden focusable="false" style={{ width: '1.5rem', height: '1.5rem' }} />
-            </MenuTrigger>
-            <MenuContent
-              tag="nav"
-              aria-label="Main"
-              className="nav flex-column pin-left pin-right border-top shadow py-2"
-            >
-              {renderMainMenu()}
-            </MenuContent>
-          </Menu>
+          {renderMenuToggleButton()}
         </div>
         <div className="w-100 d-flex justify-content-center">
           {renderLogo()}
@@ -189,3 +183,8 @@ export default function SiteHeader() {
     </>
   );
 }
+
+SiteHeader.propTypes = {
+  onMenuIconClick: PropTypes.func.isRequired,
+  isSidebarToggled: PropTypes.bool.isRequired,
+};

@@ -1,6 +1,12 @@
-@import '~@edx/paragon/scss/edx/theme.scss';
+@import '~@edx/paragon/scss/edx/theme';
+@import '~@edx/paragon/scss/edx/fonts';
 
-@import './example/index.scss';
+@import "./components/sidebar/Sidebar";
 
 @import "~@edx/frontend-component-header/dist/index";
 @import "~@edx/frontend-component-footer/dist/footer";
+
+.container-fluid {
+  width: 100%;
+  max-width: unset;
+}
